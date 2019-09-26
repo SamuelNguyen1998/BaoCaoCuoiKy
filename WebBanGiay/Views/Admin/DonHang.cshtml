@@ -1,0 +1,125 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@using WebBanGiay.Models
+@model PagedList.PagedList<DonHang>
+
+
+@{
+    ViewBag.Title = "DonHang";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center; color:green">Danh sách đơn đặt hàng</h2>
+<br />
+<p>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            
+            @Html.DisplayNameFor(model => model.First().ID)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.First().IdKhachHang)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.First().KhachHang.HoTen)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.First().KhachHang.DiaChi)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.First().KhachHang.DienThoai)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.First().KhachHang.Email)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.First().NgayBan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().TongTien)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().TrangThai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().DaThanhToan)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.ActionLink("Chi Tiet", "ChiTietDonHang",new {id = item.ID})
+            @Html.DisplayFor(modelItem => item.ID)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.IdKhachHang)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.KhachHang.HoTen)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.KhachHang.DiaChi)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.KhachHang.DienThoai)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.KhachHang.Email)
+        </td>
+
+
+
+
+
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayBan)
+        </td>
+        <td>
+                @*@Html.DisplayFor(modelItem => item.TongTien)*@
+                @String.Format("{0:0,0}", item.TongTien) VNĐ
+
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TrangThai)
+        </td>
+        <td>
+
+
+            @Html.ActionLink("Cập Nhật", "CapNhatHD", new { id = item.ID }) |
+        </td>
+    </tr>
+    }
+
+</table>
+<a>Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount</a>
+<div class="menutrang">
+    @Html.PagedListPager(Model, page => Url.Action("DonHang", new { page = page }))</>
+</div>
+<style>
+    .menutrang li {
+        display: inline-block;
+        position: relative;
+        float: left;
+        color: #428bca;
+        text-decoration: none;
+        background-color: #fff;
+    }
+</style>
+
+

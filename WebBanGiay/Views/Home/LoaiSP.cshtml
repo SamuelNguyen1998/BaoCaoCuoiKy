@@ -1,0 +1,11 @@
+﻿@model IEnumerable<WebBanGiay.Models.LoaiGiay>
+
+
+@foreach (var item in Model)
+{
+    <li class="list-group-item">
+        <a href="@Url.Action("SPTheoLoai", "Home",new {id = item.MaLoai})">
+            @item.TenLoai
+        </a>
+    </li>
+}

@@ -1,0 +1,71 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@using WebBanGiay.Models
+@model PagedList.PagedList<HangSX>
+
+@{
+    ViewBag.Title = "Nhà sản xuất";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="color:sandybrown ; text-align:center">Quản lý nhà sản xuất</h2>
+
+<p>
+    @Html.ActionLink("Thêm nhà sản xuất", "ThemNSX")
+
+
+</p>
+@ViewData["Error"]
+<table class="table">
+    <tr>
+        <th>
+            Mã hãng
+        </th>
+        <th>
+            Tên hãng
+        </th>
+        <th>
+            &ensp; &ensp; Logo
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaHang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenHang)
+            </td>
+            <td>
+                <img src="~/images/@item.Logo" width="80" />
+
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "SuaNSX", new { id = item.MaHang }) |
+                @Html.ActionLink("Chi tiết", "ChitietNSX", new { id = item.MaHang }) |
+                @Html.ActionLink("Xóa", "XoaNSX", new { id = item.MaHang })
+            </td>
+        </tr>
+    }
+
+</table>
+<a>Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount</a>
+<div class="menutrang">
+    @Html.PagedListPager(Model, page => Url.Action("NhaSanXuat", new { page = page }))</>
+</div>
+<style>
+    .menutrang li {
+        display: inline-block;
+        position: relative;
+        float: left;
+        color: #428bca;
+        text-decoration: none;
+        background-color: #fff;
+    }
+</style>
+
+
+

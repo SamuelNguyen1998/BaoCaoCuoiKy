@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>@ViewBag.Title</title>
+    @*<link rel="shortcut icon" href="~/didong/img/Designcontest-Ecommerce-Business-Mobile.ico" />*@
+    <link href="~/Content/giayy/css/bootstrap.css" rel="stylesheet">
+
+    <link href="~/Content/giayy/css/font-awesome.min.css" rel="stylesheet" />
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+    <link href="~/Content/giayy/ItemSlider/css/main-style.css" rel="stylesheet" />
+
+    <link href="~/Content/giayy/css/style.css" rel="stylesheet" />
+</head>
+<body>
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/Home"><strong><font font-size="6px" face="Comic sans MS" color="orange">PSneakerP </font></strong> Store</a>
+            </div>
+
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>@Html.Action("GioHangPartial", "GioHang")</li>
+                    <li>@Html.Action("TenKH", "GioHang")</li>
+                    <li>@Html.Action("DangXuat", "NguoiDung")</li>
+
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hỗ trợ 24/7 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a><strong>Điện thoại: </strong>0349-965-903</a></li>
+                            <li><a><strong>Mail: </strong>phungdinhpham0406@gmail.com</a></li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="~/Home/HoTro">
+                                    <strong>Địa chỉ: </strong>
+                                    <div>
+                                        Trường Đại học HUTECH<br />
+                                        Quận Bình Thạnh, Tp.HCM
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                @using (Html.BeginForm("KetQua", "Search"))
+                {
+                    <form id="txtSearch">
+                        <div class="form-group" style="margin-top:15px">
+                            @Html.TextBox("txtSearch", "", htmlAttributes: new { @class = "TextBoxSearch", @placeholder = "Nhập từ khóa cần tìm..." })
+                            <button type="submit" style="margin-left:10px;"> <img src="~/Content/giayy/img/Search-icon.png" /></button>
+                        </div>
+                    </form>
+                }
+            </div>
+
+        </div>
+
+    </nav>
+    <script lang="javascript">var _vc_data = { id: 6827147, secret: 'e6b9a46150e3878c07d55bc30420199c' }; (function () { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; ga.defer = true; ga.src = '//live.vnpgroup.net/client/tracking.js?id=6827147'; var s = document.getElementsByTagName('script'); s[0].parentNode.insertBefore(ga, s[0]); })();</script>
+
+    <div class="container">
+        <Div>
+            @RenderBody()
+        </Div>
+    </div>
+
+    <div class="col-md-12 download-app-box text-center">
+
+
+
+    </div>
+    <div class="col-md-6" style="padding-top: 20px">
+        <strong style="margin-top:20px;"><font size="5" color="Black">Thông tin hỗ trợ</font></strong>
+        <hr>
+        <p>
+            <div class="col-md-4">
+                <a href="#">Giới thiệu</a><br />
+                <a href="#">Tuyển dụng</a><br />
+                <a href="#">Chính sách bảo mật</a><br />
+            </div>
+            <div class="col-md-4">
+                <a href="#">Chính sách đổi trả</a><br />
+                <a href="#">Chính sách bảo hành</a><br>
+                <a href="#">Mua hàng từ xa</a><br>
+                <a href="#">Thanh toán online</a><br />
+                <img src="~/Content/giayy/img/fullbank.png" />
+            </div>
+        </p>
+    </div>
+    <div class="col-md-6" style="padding-top: 20px">
+
+        <strong><font size="5" color="Black" style="margin-left:30px;">Địa chỉ</font></strong>
+        <hr>
+        <div class="col-md-5">
+            <p style="border-right:50px;">
+                475A Điện Biên Phủ,<br />
+                Quận Bình Thạnh, TP.HCM<br />
+                ĐT: 0963-720-329 || 0938-842-638<br>
+            </p>
+        </div>
+        <div class="col-md-3">
+            <iframe width="320" height="200" frameborder="0" style="border:0"
+                    src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJq0PLWaQodTERfiq1cNMpPWw&key=AIzaSyC4M0r4UZrpyrFzwHm7kUiQTaDzR8npPcg" allowfullscreen></iframe>
+        </div>
+    </div>
+
+
+    <hr>
+
+    <div class="col-md-12 end-box ">
+        Copyright &copy; 2019 | &nbsp; Bản quyền sắp được đăng ký | &nbsp; www.PSneakerP.com | &nbsp; Hỗ trợ 24/7 |&nbsp; Design by <a href="https://www.facebook.com/shen.long.35574">Phùng Đình Phạm</a>| &nbsp; Email: phungdinhpham0406@gmail.com
+
+        <script src="~/Content/giayy/js/jquery-1.10.2.js"></script>
+        <script src="~/Content/giayy/js/bootstrap.js"></script>
+        <script src="~/Content/giayy/ItemSlider/js/modernizr.custom.63321.js"></script>
+        <script src="~/Content/giayy/ItemSlider/js/jquery.catslider.js"></script>
+        <script>
+            $(function () {
+
+                $('#mi-slider').catslider();
+
+            });
+        </script>
+        @*FB*@
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.2&appId=293509351567709&autoLogAppEvents=1"></script>
+        <script src="/Content/MyStyle/assets/js/jquery.js"></script>
+        <script src="/Content/MyStyle/assets/js/bootstrap.min.js"></script>
+        <script src="/Content/MyStyle/assets/js/jquery.easing-1.3.min.js"></script>
+        <script src="/Content/MyStyle/assets/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+        <script src="/Content/MyStyle/assets/js/shop.js"></script>
+</body>
+</html>

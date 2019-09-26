@@ -1,0 +1,67 @@
+﻿
+
+@{
+    ViewBag.Title = "PSneakerP: Đăng nhập";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-3">
+        <div>
+            <a href="#" class="list-group-item active">
+                <strong>Thương Hiệu</strong>
+            </a>
+            <ul class="list-group">
+                @Html.Action("HangSanXuat", "Home")
+            </ul>
+        </div>
+        <div>
+            <a href="#" class="list-group-item active list-group-item-success">
+                <strong>Loại</strong>
+            </a>
+            <ul class="list-group">
+                @Html.Action("LoaiSP", "Home")
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div>
+            <ol class="breadcrumb">
+                <li><a href="/Home">Home</a></li>
+                <li class="active">Đăng nhập</li>
+            </ol>
+        </div>
+        <div class="row">
+            <h2 style="text-align:center">Đăng nhập tài khoản</h2>
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary(true)
+                <form class="row login_form" method="post" id="contactForm" novalidate="novalidate">
+
+                    <div class="col-md-12 form-group">
+                        @Html.TextBox("Taikhoan", "", new { @id = "formUser", @class = "form-control", placeholder = "Tài khoản " })
+                        @ViewData["ErrorUsername"]
+                    </div>
+                    <div class="col-md-12 form-group">
+                        @Html.Password("Matkhau", "", new { @class = "form-control", placeholder = "Mật khẩu" })
+                        @ViewData["ErrorPassword"]
+                    </div>
+                    <div class="col-md-12 form-group" style="text-align:center">
+                        <input type="submit" value="Đăng Nhập" class="primary-btn" onclick="validateForm()" />
+                    </div>
+                    <div class="col-md-12 form-group" style="text-align:center">
+                        Chưa có tài khoản ? >@Html.ActionLink("Đăng ký", "DangKy", "NguoiDung")<
+                    </div>
+                    <div>
+                        <h3 style="color:lawngreen; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                            @ViewBag.Thongbao
+                        </h3>
+                    </div>
+                </form>
+
+            }
+        </div>
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->

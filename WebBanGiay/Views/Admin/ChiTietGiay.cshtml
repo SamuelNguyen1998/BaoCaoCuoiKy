@@ -1,0 +1,100 @@
+﻿@model WebBanGiay.Models.Giay
+
+@{
+    ViewBag.Title = "ChiTietGiay";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Chi Tiết Giày</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã giày:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaGiay)
+        </dd>
+
+        <dt>
+            Tên giày:
+        </dt>
+
+
+        <dd>
+            @Html.DisplayFor(model => model.TenGiay)
+        </dd>
+
+        <dt>
+            Mã hãng:
+        </dt>
+
+
+        <dd>
+            @Html.DisplayFor(model => model.MaHang)
+        </dd>
+
+        <dt>
+            Mã loại:
+        </dt>
+
+
+        <dd>
+            @Html.DisplayFor(model => model.MaLoai)
+        </dd>
+
+        <dt>
+            Màu sắc:
+        </dt>
+
+
+
+        <dd>
+            @Html.DisplayFor(model => model.MauSac)
+        </dd>
+
+        <dt>
+            Hình ảnh:
+        </dt>
+
+
+        <dd>
+            <img src="@Url.Content("~/images/"+ Model.HinhAnh)" width="100" />
+        </dd>
+
+
+        <dt>
+            Giá bán:
+        </dt>
+
+        <dd>
+            @String.Format("{0:0,0}", Model.GiaBan) VNĐ
+        </dd>
+
+        <dt>
+            Trạng thái:
+        </dt>
+        
+
+        <dd>
+            @Html.DisplayFor(model => model.TrangThai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThanhToanOnline)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThanhToanOnline)
+        </dd>
+
+        
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "SuaGiay", new { id = Model.MaGiay }) |
+    @Html.ActionLink("Quay lại", "Giay")
+</p>

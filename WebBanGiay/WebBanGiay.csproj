@@ -1,0 +1,944 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{78E10FE1-B7E8-41AE-B8B1-826847ED5FC6}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebBanGiay</RootNamespace>
+    <AssemblyName>WebBanGiay</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BotDetect, Version=4.4.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CAPTCHA.asp.net.core.on.legacy.net.frameworks.4.4.1.1\lib\net46\BotDetect.dll</HintPath>
+    </Reference>
+    <Reference Include="BotDetect.Web.Mvc, Version=4.4.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CAPTCHA.asp.net.core.on.legacy.net.frameworks.4.4.1.1\lib\net46\BotDetect.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Facebook, Version=6.0.10.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
+      <HintPath>..\packages\Facebook.7.0.6\lib\net45\Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Antiforgery, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Antiforgery.1.0.0\lib\net451\Microsoft.AspNetCore.Antiforgery.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Authorization, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Authorization.1.0.0\lib\net451\Microsoft.AspNetCore.Authorization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Cors, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Cors.1.0.0\lib\net451\Microsoft.AspNetCore.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Cryptography.Internal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Cryptography.Internal.1.0.0\lib\net451\Microsoft.AspNetCore.Cryptography.Internal.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.DataProtection, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.DataProtection.1.0.0\lib\net451\Microsoft.AspNetCore.DataProtection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.DataProtection.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.DataProtection.Abstractions.1.0.0\lib\net451\Microsoft.AspNetCore.DataProtection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Diagnostics.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Diagnostics.Abstractions.1.0.0\lib\netstandard1.0\Microsoft.AspNetCore.Diagnostics.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Hosting.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Hosting.Abstractions.1.0.0\lib\net451\Microsoft.AspNetCore.Hosting.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Hosting.Server.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Hosting.Server.Abstractions.1.0.0\lib\net451\Microsoft.AspNetCore.Hosting.Server.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Html.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Html.Abstractions.1.0.0\lib\netstandard1.0\Microsoft.AspNetCore.Html.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Http, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Http.1.0.0\lib\net451\Microsoft.AspNetCore.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Http.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Http.Abstractions.1.0.0\lib\net451\Microsoft.AspNetCore.Http.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Http.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Http.Extensions.1.0.0\lib\net451\Microsoft.AspNetCore.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Http.Features, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Http.Features.1.0.0\lib\net451\Microsoft.AspNetCore.Http.Features.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.JsonPatch, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.JsonPatch.1.0.0\lib\netstandard1.1\Microsoft.AspNetCore.JsonPatch.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Localization, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Localization.1.0.0\lib\net451\Microsoft.AspNetCore.Localization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Mvc.1.0.0\lib\net451\Microsoft.AspNetCore.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Mvc.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Mvc.Abstractions.1.0.0\lib\net451\Microsoft.AspNetCore.Mvc.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Mvc.ApiExplorer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Mvc.ApiExplorer.1.0.0\lib\net451\Microsoft.AspNetCore.Mvc.ApiExplorer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Mvc.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Mvc.Core.1.0.0\lib\net451\Microsoft.AspNetCore.Mvc.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Mvc.Cors, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Mvc.Cors.1.0.0\lib\net451\Microsoft.AspNetCore.Mvc.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Mvc.DataAnnotations, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Mvc.DataAnnotations.1.0.0\lib\net451\Microsoft.AspNetCore.Mvc.DataAnnotations.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Mvc.Formatters.Json, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Mvc.Formatters.Json.1.0.0\lib\net451\Microsoft.AspNetCore.Mvc.Formatters.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Mvc.Localization, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Mvc.Localization.1.0.0\lib\net451\Microsoft.AspNetCore.Mvc.Localization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Mvc.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Mvc.Razor.1.0.0\lib\net451\Microsoft.AspNetCore.Mvc.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Mvc.Razor.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Mvc.Razor.Host.1.0.0\lib\net451\Microsoft.AspNetCore.Mvc.Razor.Host.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Mvc.TagHelpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Mvc.TagHelpers.1.0.0\lib\net451\Microsoft.AspNetCore.Mvc.TagHelpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Mvc.ViewFeatures, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Mvc.ViewFeatures.1.0.0\lib\net451\Microsoft.AspNetCore.Mvc.ViewFeatures.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Razor.1.0.0\lib\net451\Microsoft.AspNetCore.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Razor.Runtime, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Razor.Runtime.1.0.0\lib\net451\Microsoft.AspNetCore.Razor.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Routing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Routing.1.0.0\lib\net451\Microsoft.AspNetCore.Routing.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Routing.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Routing.Abstractions.1.0.0\lib\net451\Microsoft.AspNetCore.Routing.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Session.1.0.0\lib\net451\Microsoft.AspNetCore.Session.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.WebUtilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.WebUtilities.1.0.0\lib\net451\Microsoft.AspNetCore.WebUtilities.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.Common.1.3.0\lib\net45\Microsoft.CodeAnalysis.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.CSharp, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.CSharp.1.3.0\lib\net45\Microsoft.CodeAnalysis.CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.DotNet.InternalAbstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.DotNet.InternalAbstractions.1.0.0\lib\net451\Microsoft.DotNet.InternalAbstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Caching.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Caching.Abstractions.1.0.0\lib\netstandard1.0\Microsoft.Extensions.Caching.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Caching.Memory, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Caching.Memory.1.0.0\lib\net451\Microsoft.Extensions.Caching.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.1.0.0\lib\netstandard1.1\Microsoft.Extensions.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Abstractions.1.0.0\lib\netstandard1.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Binder, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Binder.1.0.0\lib\netstandard1.1\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.1.0.0\lib\netstandard1.1\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.1.0.0\lib\netstandard1.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyModel, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyModel.1.0.0\lib\net451\Microsoft.Extensions.DependencyModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileProviders.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.FileProviders.Abstractions.1.0.0\lib\netstandard1.0\Microsoft.Extensions.FileProviders.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileProviders.Composite, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.FileProviders.Composite.1.0.0\lib\netstandard1.0\Microsoft.Extensions.FileProviders.Composite.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileProviders.Physical, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.FileProviders.Physical.1.0.0\lib\net451\Microsoft.Extensions.FileProviders.Physical.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileSystemGlobbing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.FileSystemGlobbing.1.0.0\lib\net451\Microsoft.Extensions.FileSystemGlobbing.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Globalization.CultureInfoCache, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Globalization.CultureInfoCache.1.0.0\lib\netstandard1.1\Microsoft.Extensions.Globalization.CultureInfoCache.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Localization, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Localization.1.0.0\lib\net451\Microsoft.Extensions.Localization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Localization.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Localization.Abstractions.1.0.0\lib\netstandard1.0\Microsoft.Extensions.Localization.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.1.0.0\lib\netstandard1.1\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.ObjectPool, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.ObjectPool.1.0.0\lib\net451\Microsoft.Extensions.ObjectPool.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.1.0.0\lib\netstandard1.0\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.PlatformAbstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.PlatformAbstractions.1.0.0\lib\net451\Microsoft.Extensions.PlatformAbstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.1.0.0\lib\netstandard1.0\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.WebEncoders, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.WebEncoders.1.0.0\lib\netstandard1.0\Microsoft.Extensions.WebEncoders.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Net.Http.Headers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.Headers.1.0.0\lib\netstandard1.1\Microsoft.Net.Http.Headers.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.AppContext, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.AppContext.4.1.0\lib\net46\System.AppContext.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.0.0\lib\netstandard1.1\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable, Version=1.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.1.2.0\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.Primitives, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Primitives.4.1.0\lib\net45\System.ComponentModel.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.TypeConverter, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.TypeConverter.4.1.0\lib\net45\System.ComponentModel.TypeConverter.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Console, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Console.4.0.0\lib\net46\System.Console.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Data.SQLite, Version=1.0.111.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Core.1.0.111.0\lib\net46\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.0.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.FileVersionInfo, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.FileVersionInfo.4.0.0\lib\net46\System.Diagnostics.FileVersionInfo.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.StackTrace, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.StackTrace.4.0.1\lib\net46\System.Diagnostics.StackTrace.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.FileSystem, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.4.0.1\lib\net46\System.IO.FileSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.Primitives.4.0.1\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Reflection.Metadata, Version=1.3.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reflection.Metadata.1.3.0\lib\portable-net45+win8\System.Reflection.Metadata.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Primitives, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.Serialization.Primitives.4.1.1\lib\net46\System.Runtime.Serialization.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.2.0\lib\net461\System.Security.Cryptography.Algorithms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.0.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.0.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.1.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encoding.CodePages, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encoding.CodePages.4.0.1\lib\net46\System.Text.Encoding.CodePages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.4.0.0\lib\netstandard1.0\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Thread, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Thread.4.0.0\lib\net46\System.Threading.Thread.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.XmlDocument, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Xml.XmlDocument.4.0.1\lib\net46\System.Xml.XmlDocument.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.XPath, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Xml.XPath.4.0.1\lib\net46\System.Xml.XPath.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.XPath.XDocument, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Xml.XPath.XDocument.4.0.1\lib\net46\System.Xml.XPath.XDocument.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\GioHangController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NguoiDungController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChiTietDonHang.cs" />
+    <Compile Include="Models\dbQLBanGiay.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbQLBanGiay.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GioHang.cs" />
+    <Compile Include="Models\Metadata\Giay.metadata.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\flexslider.css" />
+    <Content Include="Content\form.css" />
+    <Content Include="Content\giayy\css\bootstrap.css" />
+    <Content Include="Content\giayy\css\font-awesome.min.css" />
+    <Content Include="Content\giayy\css\style.css" />
+    <Content Include="Content\giayy\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\giayy\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\giayy\img\121186-1.jpg" />
+    <Content Include="Content\giayy\img\3c316e4.png" />
+    <Content Include="Content\giayy\img\642_shop1_382839.jpg" />
+    <Content Include="Content\giayy\img\940x564q80.jpg" />
+    <Content Include="Content\giayy\img\a7705e6e423e5d42a4dac4866b82fbd9.jpg" />
+    <Content Include="Content\giayy\img\adidas-d-rose-6-red.jpg" />
+    <Content Include="Content\giayy\img\adidas-originals-superstar-veno-1.jpg" />
+    <Content Include="Content\giayy\img\basketball-shoes-mens-basketball-shoes-ABAH017-5_B.jpg" />
+    <Content Include="Content\giayy\img\converse-chuck-2-shoes-7.jpg" />
+    <Content Include="Content\giayy\img\cropped-newbiestore-sneaker-banner-2.jpg" />
+    <Content Include="Content\giayy\img\DSC03618_1024x1024.jpg" />
+    <Content Include="Content\giayy\img\fa4596ad9a9d39901eeb455ed4f74e44.jpg" />
+    <Content Include="Content\giayy\img\fullbank - small.png" />
+    <Content Include="Content\giayy\img\fullbank.png" />
+    <Content Include="Content\giayy\img\jodan.png" />
+    <Content Include="Content\giayy\img\logoadidas01.jpg" />
+    <Content Include="Content\giayy\img\logoconvot.png" />
+    <Content Include="Content\giayy\img\logocroc.jpg" />
+    <Content Include="Content\giayy\img\logonike.jpg" />
+    <Content Include="Content\giayy\img\logovan.jpg" />
+    <Content Include="Content\giayy\img\mens-Converse-classic-SB-shoes-red-387_04_LRG.jpg" />
+    <Content Include="Content\giayy\img\partners1.png" />
+    <Content Include="Content\giayy\img\Q2940jordanshoes_9571.jpg" />
+    <Content Include="Content\giayy\img\Q3697jordanshoes_12174.jpg" />
+    <Content Include="Content\giayy\img\say-hello.jpg" />
+    <Content Include="Content\giayy\img\Search-icon.png" />
+    <Content Include="Content\giayy\img\shopping-icon.png" />
+    <Content Include="Content\giayy\img\thanhtoan-l.png" />
+    <Content Include="Content\giayy\img\thankyou-1024x538.png" />
+    <Content Include="Content\giayy\img\TNStore.png" />
+    <Content Include="Content\giayy\img\vans-old-skool.jpg" />
+    <Content Include="Content\giayy\img\Vans-SK8-Hi-Black-White-Classic-Womens-Shoes_06.jpg" />
+    <Content Include="Content\giayy\img\Webiconset-Application-Register %281%29.ico" />
+    <Content Include="Content\giayy\img\Zalo_ScreenShot_17_8_2018_1243450.png" />
+    <Content Include="Content\giayy\ItemSlider\css\demo.css" />
+    <Content Include="Content\giayy\ItemSlider\css\main-style.css" />
+    <Content Include="Content\giayy\ItemSlider\images\1.jpg" />
+    <Content Include="Content\giayy\ItemSlider\images\10.jpg" />
+    <Content Include="Content\giayy\ItemSlider\images\11.jpg" />
+    <Content Include="Content\giayy\ItemSlider\images\12.jpg" />
+    <Content Include="Content\giayy\ItemSlider\images\13.1.jpg" />
+    <Content Include="Content\giayy\ItemSlider\images\13.jpg" />
+    <Content Include="Content\giayy\ItemSlider\images\14.jpg" />
+    <Content Include="Content\giayy\ItemSlider\images\15.jpg" />
+    <Content Include="Content\giayy\ItemSlider\images\2.jpg" />
+    <Content Include="Content\giayy\ItemSlider\images\3.jpg" />
+    <Content Include="Content\giayy\ItemSlider\images\4.jpg" />
+    <Content Include="Content\giayy\ItemSlider\images\5.jpg" />
+    <Content Include="Content\giayy\ItemSlider\images\6.jpg" />
+    <Content Include="Content\giayy\ItemSlider\images\7.jpg" />
+    <Content Include="Content\giayy\ItemSlider\images\8.jpg" />
+    <Content Include="Content\giayy\ItemSlider\images\9.jpg" />
+    <Content Include="Content\giayy\ItemSlider\index.html" />
+    <Content Include="Content\giayy\ItemSlider\js\jquery.catslider.js" />
+    <Content Include="Content\giayy\ItemSlider\js\modernizr.custom.63321.js" />
+    <Content Include="Content\giayy\js\bootstrap.js" />
+    <Content Include="Content\giayy\js\bootstrap.min.js" />
+    <Content Include="Content\giayy\js\jquery-1.10.2.js" />
+    <Content Include="Content\giayy\loginAD\css\style.css" />
+    <Content Include="Content\giayy\loginAD\js\index.js" />
+    <Content Include="Content\giayy\teamplateAd\css\bootstrap-responsive.css" />
+    <Content Include="Content\giayy\teamplateAd\css\bootstrap-responsive.min.css" />
+    <Content Include="Content\giayy\teamplateAd\css\bootstrap.css" />
+    <Content Include="Content\giayy\teamplateAd\css\bootstrap.min.css" />
+    <Content Include="Content\giayy\teamplateAd\css\chosen.css" />
+    <Content Include="Content\giayy\teamplateAd\css\elfinder.min.css" />
+    <Content Include="Content\giayy\teamplateAd\css\elfinder.theme.css" />
+    <Content Include="Content\giayy\teamplateAd\css\font-awesome-ie7.min.css" />
+    <Content Include="Content\giayy\teamplateAd\css\font-awesome.min.css" />
+    <Content Include="Content\giayy\teamplateAd\css\fullcalendar.css" />
+    <Content Include="Content\giayy\teamplateAd\css\glyphicons.css" />
+    <Content Include="Content\giayy\teamplateAd\css\halflings.css" />
+    <Content Include="Content\giayy\teamplateAd\css\ie.css" />
+    <Content Include="Content\giayy\teamplateAd\css\ie9.css" />
+    <Content Include="Content\giayy\teamplateAd\css\jquery-ui-1.8.21.custom.css" />
+    <Content Include="Content\giayy\teamplateAd\css\jquery.cleditor.css" />
+    <Content Include="Content\giayy\teamplateAd\css\jquery.gritter.css" />
+    <Content Include="Content\giayy\teamplateAd\css\jquery.iphone.toggle.css" />
+    <Content Include="Content\giayy\teamplateAd\css\jquery.noty.css" />
+    <Content Include="Content\giayy\teamplateAd\css\noty_theme_default.css" />
+    <Content Include="Content\giayy\teamplateAd\css\style-forms.css" />
+    <Content Include="Content\giayy\teamplateAd\css\style-responsive.css" />
+    <Content Include="Content\giayy\teamplateAd\css\style.css" />
+    <Content Include="Content\giayy\teamplateAd\css\uniform.default.css" />
+    <Content Include="Content\giayy\teamplateAd\css\uploadify.css" />
+    <Content Include="Content\giayy\teamplateAd\font\glyphicons-regular.svg" />
+    <Content Include="Content\giayy\teamplateAd\font\glyphiconshalflings-regular.svg" />
+    <Content Include="Content\giayy\teamplateAd\img\arrows-active.png" />
+    <Content Include="Content\giayy\teamplateAd\img\arrows-normal.png" />
+    <Content Include="Content\giayy\teamplateAd\img\avatar.jpg" />
+    <Content Include="Content\giayy\teamplateAd\img\bg-input-focus.png" />
+    <Content Include="Content\giayy\teamplateAd\img\bg-input.png" />
+    <Content Include="Content\giayy\teamplateAd\img\bg-login.jpg" />
+    <Content Include="Content\giayy\teamplateAd\img\browser-chrome-big.png" />
+    <Content Include="Content\giayy\teamplateAd\img\browser-firefox-big.png" />
+    <Content Include="Content\giayy\teamplateAd\img\browser-ie.png" />
+    <Content Include="Content\giayy\teamplateAd\img\browser-opera.png" />
+    <Content Include="Content\giayy\teamplateAd\img\browser-safari.png" />
+    <Content Include="Content\giayy\teamplateAd\img\buttons.gif" />
+    <Content Include="Content\giayy\teamplateAd\img\chat-left%402x.png" />
+    <Content Include="Content\giayy\teamplateAd\img\chat-left-metro%402x.png" />
+    <Content Include="Content\giayy\teamplateAd\img\chat-left-metro.png" />
+    <Content Include="Content\giayy\teamplateAd\img\chat-left.png" />
+    <Content Include="Content\giayy\teamplateAd\img\chat-right%402x.png" />
+    <Content Include="Content\giayy\teamplateAd\img\chat-right-metro%402x.png" />
+    <Content Include="Content\giayy\teamplateAd\img\chat-right-metro.png" />
+    <Content Include="Content\giayy\teamplateAd\img\chat-right.png" />
+    <Content Include="Content\giayy\teamplateAd\img\chosen-sprite.png" />
+    <Content Include="Content\giayy\teamplateAd\img\close-button-white.png" />
+    <Content Include="Content\giayy\teamplateAd\img\close-button.png" />
+    <Content Include="Content\giayy\teamplateAd\img\crop.gif" />
+    <Content Include="Content\giayy\teamplateAd\img\dialogs.png" />
+    <Content Include="Content\giayy\teamplateAd\img\gallery\photo1.jpg" />
+    <Content Include="Content\giayy\teamplateAd\img\gallery\photo10.jpg" />
+    <Content Include="Content\giayy\teamplateAd\img\gallery\photo11.jpg" />
+    <Content Include="Content\giayy\teamplateAd\img\gallery\photo12.jpg" />
+    <Content Include="Content\giayy\teamplateAd\img\gallery\photo13.jpg" />
+    <Content Include="Content\giayy\teamplateAd\img\gallery\photo2.jpg" />
+    <Content Include="Content\giayy\teamplateAd\img\gallery\photo3.jpg" />
+    <Content Include="Content\giayy\teamplateAd\img\gallery\photo4.jpg" />
+    <Content Include="Content\giayy\teamplateAd\img\gallery\photo5.jpg" />
+    <Content Include="Content\giayy\teamplateAd\img\gallery\photo6.jpg" />
+    <Content Include="Content\giayy\teamplateAd\img\gallery\photo7.jpg" />
+    <Content Include="Content\giayy\teamplateAd\img\gallery\photo8.jpg" />
+    <Content Include="Content\giayy\teamplateAd\img\gallery\photo9.jpg" />
+    <Content Include="Content\giayy\teamplateAd\img\glyphicons-halflings-white.png" />
+    <Content Include="Content\giayy\teamplateAd\img\glyphicons-halflings.png" />
+    <Content Include="Content\giayy\teamplateAd\img\glyphicons-white.png" />
+    <Content Include="Content\giayy\teamplateAd\img\glyphicons-white.svg" />
+    <Content Include="Content\giayy\teamplateAd\img\glyphicons.png" />
+    <Content Include="Content\giayy\teamplateAd\img\glyphicons.svg" />
+    <Content Include="Content\giayy\teamplateAd\img\glyphicons_halflings-white.png" />
+    <Content Include="Content\giayy\teamplateAd\img\glyphicons_halflings-white.svg" />
+    <Content Include="Content\giayy\teamplateAd\img\glyphicons_halflings.png" />
+    <Content Include="Content\giayy\teamplateAd\img\glyphicons_halflings.svg" />
+    <Content Include="Content\giayy\teamplateAd\img\icons-big.png" />
+    <Content Include="Content\giayy\teamplateAd\img\icons-small.png" />
+    <Content Include="Content\giayy\teamplateAd\img\iphone-style-checkboxes\off-63584.png" />
+    <Content Include="Content\giayy\teamplateAd\img\iphone-style-checkboxes\on-63584.png" />
+    <Content Include="Content\giayy\teamplateAd\img\iphone-style-checkboxes\slider_center-63584.png" />
+    <Content Include="Content\giayy\teamplateAd\img\iphone-style-checkboxes\slider_left-63584.png" />
+    <Content Include="Content\giayy\teamplateAd\img\iphone-style-checkboxes\slider_right-63584.png" />
+    <Content Include="Content\giayy\teamplateAd\img\progress.gif" />
+    <Content Include="Content\giayy\teamplateAd\img\quicklook-bg.png" />
+    <Content Include="Content\giayy\teamplateAd\img\quicklook-icons.png" />
+    <Content Include="Content\giayy\teamplateAd\img\quote.png" />
+    <Content Include="Content\giayy\teamplateAd\img\resize.png" />
+    <Content Include="Content\giayy\teamplateAd\img\slider_r8.png" />
+    <Content Include="Content\giayy\teamplateAd\img\spinner-mini.gif" />
+    <Content Include="Content\giayy\teamplateAd\img\sprite.png" />
+    <Content Include="Content\giayy\teamplateAd\img\timeline-bg.png" />
+    <Content Include="Content\giayy\teamplateAd\img\timeline-left-arrow%402x.png" />
+    <Content Include="Content\giayy\teamplateAd\img\timeline-left-arrow.png" />
+    <Content Include="Content\giayy\teamplateAd\img\timeline-right-arrow%402x.png" />
+    <Content Include="Content\giayy\teamplateAd\img\timeline-right-arrow.png" />
+    <Content Include="Content\giayy\teamplateAd\img\toolbar.gif" />
+    <Content Include="Content\giayy\teamplateAd\img\toolbar.png" />
+    <Content Include="Content\giayy\teamplateAd\img\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\giayy\teamplateAd\img\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\giayy\teamplateAd\img\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\giayy\teamplateAd\img\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\giayy\teamplateAd\img\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\giayy\teamplateAd\img\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\giayy\teamplateAd\img\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\giayy\teamplateAd\img\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\giayy\teamplateAd\img\ui-icons_222222_256x240.png" />
+    <Content Include="Content\giayy\teamplateAd\img\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\giayy\teamplateAd\img\ui-icons_454545_256x240.png" />
+    <Content Include="Content\giayy\teamplateAd\img\ui-icons_888888_256x240.png" />
+    <Content Include="Content\giayy\teamplateAd\img\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\giayy\teamplateAd\img\uploadify-cancel.png" />
+    <Content Include="Content\giayy\teamplateAd\index.html" />
+    <Content Include="Content\giayy\teamplateAd\js\bootstrap.js" />
+    <Content Include="Content\giayy\teamplateAd\js\bootstrap.min.js" />
+    <Content Include="Content\giayy\teamplateAd\js\counter.js" />
+    <Content Include="Content\giayy\teamplateAd\js\custom.js" />
+    <Content Include="Content\giayy\teamplateAd\js\excanvas.js" />
+    <Content Include="Content\giayy\teamplateAd\js\fullcalendar.min.js" />
+    <Content Include="Content\giayy\teamplateAd\js\jquery-1.9.1.min.js" />
+    <Content Include="Content\giayy\teamplateAd\js\jquery-migrate-1.0.0.min.js" />
+    <Content Include="Content\giayy\teamplateAd\js\jquery-ui-1.10.0.custom.min.js" />
+    <Content Include="Content\giayy\teamplateAd\js\jquery.chosen.min.js" />
+    <Content Include="Content\giayy\teamplateAd\js\jquery.cleditor.min.js" />
+    <Content Include="Content\giayy\teamplateAd\js\jquery.cookie.js" />
+    <Content Include="Content\giayy\teamplateAd\js\jquery.dataTables.min.js" />
+    <Content Include="Content\giayy\teamplateAd\js\jquery.elfinder.min.js" />
+    <Content Include="Content\giayy\teamplateAd\js\jquery.flot.js" />
+    <Content Include="Content\giayy\teamplateAd\js\jquery.flot.pie.js" />
+    <Content Include="Content\giayy\teamplateAd\js\jquery.flot.resize.min.js" />
+    <Content Include="Content\giayy\teamplateAd\js\jquery.flot.stack.js" />
+    <Content Include="Content\giayy\teamplateAd\js\jquery.gritter.min.js" />
+    <Content Include="Content\giayy\teamplateAd\js\jquery.imagesloaded.js" />
+    <Content Include="Content\giayy\teamplateAd\js\jquery.iphone.toggle.js" />
+    <Content Include="Content\giayy\teamplateAd\js\jquery.knob.modified.js" />
+    <Content Include="Content\giayy\teamplateAd\js\jquery.masonry.min.js" />
+    <Content Include="Content\giayy\teamplateAd\js\jquery.noty.js" />
+    <Content Include="Content\giayy\teamplateAd\js\jquery.raty.min.js" />
+    <Content Include="Content\giayy\teamplateAd\js\jquery.sparkline.min.js" />
+    <Content Include="Content\giayy\teamplateAd\js\jquery.ui.touch-punch.js" />
+    <Content Include="Content\giayy\teamplateAd\js\jquery.uniform.min.js" />
+    <Content Include="Content\giayy\teamplateAd\js\jquery.uploadify-3.1.min.js" />
+    <Content Include="Content\giayy\teamplateAd\js\modernizr.js" />
+    <Content Include="Content\giayy\teamplateAd\js\retina.js" />
+    <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\MyStyle\assets\css\bootstrap-responsive.css" />
+    <Content Include="Content\MyStyle\assets\css\bootstrap-responsive.min.css" />
+    <Content Include="Content\MyStyle\assets\css\bootstrap.css" />
+    <Content Include="Content\MyStyle\assets\css\bootstrap.min.css" />
+    <Content Include="Content\MyStyle\assets\font-awesome\css\font-awesome-ie7.css" />
+    <Content Include="Content\MyStyle\assets\font-awesome\css\font-awesome-ie7.min.css" />
+    <Content Include="Content\MyStyle\assets\font-awesome\css\font-awesome.css" />
+    <Content Include="Content\MyStyle\assets\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Content\MyStyle\assets\font-awesome\font\fontawesome-webfont.svg" />
+    <Content Include="Content\MyStyle\assets\ico\favicon.ico" />
+    <Content Include="Content\MyStyle\assets\img\1.png" />
+    <Content Include="Content\MyStyle\assets\img\2.png" />
+    <Content Include="Content\MyStyle\assets\img\3.png" />
+    <Content Include="Content\MyStyle\assets\img\4.png" />
+    <Content Include="Content\MyStyle\assets\img\5.png" />
+    <Content Include="Content\MyStyle\assets\img\6.png" />
+    <Content Include="Content\MyStyle\assets\img\a.jpg" />
+    <Content Include="Content\MyStyle\assets\img\ax.png" />
+    <Content Include="Content\MyStyle\assets\img\b.jpg" />
+    <Content Include="Content\MyStyle\assets\img\bootstrap-ecommerce-templates.PNG" />
+    <Content Include="Content\MyStyle\assets\img\bootstrap-ring.png" />
+    <Content Include="Content\MyStyle\assets\img\bootstrap-template.png" />
+    <Content Include="Content\MyStyle\assets\img\bootstrap-templates.png" />
+    <Content Include="Content\MyStyle\assets\img\bootstrappage_shop.png" />
+    <Content Include="Content\MyStyle\assets\img\bootstrap_free-ecommerce.png" />
+    <Content Include="Content\MyStyle\assets\img\c.jpg" />
+    <Content Include="Content\MyStyle\assets\img\carousel1.png" />
+    <Content Include="Content\MyStyle\assets\img\carousel3.png" />
+    <Content Include="Content\MyStyle\assets\img\d.jpg" />
+    <Content Include="Content\MyStyle\assets\img\disc.png" />
+    <Content Include="Content\MyStyle\assets\img\e.jpg" />
+    <Content Include="Content\MyStyle\assets\img\f.jpg" />
+    <Content Include="Content\MyStyle\assets\img\g.jpg" />
+    <Content Include="Content\MyStyle\assets\img\h.jpg" />
+    <Content Include="Content\MyStyle\assets\img\i.jpg" />
+    <Content Include="Content\MyStyle\assets\img\j.jpg" />
+    <Content Include="Content\MyStyle\assets\img\logo-bootstrap-shoping-cart.png" />
+    <Content Include="Content\MyStyle\assets\img\maestro.png" />
+    <Content Include="Content\MyStyle\assets\img\mc.png" />
+    <Content Include="Content\MyStyle\assets\img\new.png" />
+    <Content Include="Content\MyStyle\assets\img\paypal.jpg" />
+    <Content Include="Content\MyStyle\assets\img\pp.png" />
+    <Content Include="Content\MyStyle\assets\img\s.png" />
+    <Content Include="Content\MyStyle\assets\img\shop-cart.PNG" />
+    <Content Include="Content\MyStyle\assets\img\shopping-cart-template.PNG" />
+    <Content Include="Content\MyStyle\assets\img\visa.png" />
+    <Content Include="Content\MyStyle\assets\img\white_leather.png" />
+    <Content Include="Content\MyStyle\assets\js\bootstrap.js" />
+    <Content Include="Content\MyStyle\assets\js\bootstrap.min.js" />
+    <Content Include="Content\MyStyle\assets\js\jquery.easing-1.3.min.js" />
+    <Content Include="Content\MyStyle\assets\js\jquery.js" />
+    <Content Include="Content\MyStyle\assets\js\jquery.scrollTo-1.4.3.1-min.js" />
+    <Content Include="Content\MyStyle\assets\js\shop.js" />
+    <Content Include="Content\MyStyle\style.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\style.css" />
+    <Content Include="Content\template\neworder.html" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\Archivo_Narrow\OFL.txt" />
+    <Content Include="fonts\Didact_Gothic\OFL.txt" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\Pathway_Gothic_One\OFL.txt" />
+    <Content Include="Global.asax" />
+    <Content Include="images\121186-1.jpg" />
+    <Content Include="images\3c316e4.png" />
+    <Content Include="images\642_shop1_382839.jpg" />
+    <Content Include="images\940x564q80.jpg" />
+    <Content Include="images\adidas-d-rose-6-red.jpg" />
+    <Content Include="images\adidas-originals-superstar-veno-1.jpg" />
+    <Content Include="images\b-arrow.png" />
+    <Content Include="images\basket.png" />
+    <Content Include="images\basketball-shoes-mens-basketball-shoes-ABAH017-5_B.jpg" />
+    <Content Include="images\converse-chuck-2-shoes-7.jpg" />
+    <Content Include="images\cropped-newbiestore-sneaker-banner-2.jpg" />
+    <Content Include="images\do.png" />
+    <Content Include="images\DSC03618_1024x1024.jpg" />
+    <Content Include="images\f-l.jpg" />
+    <Content Include="images\f-l.png" />
+    <Content Include="images\f-r.jpg" />
+    <Content Include="images\f-r.png" />
+    <Content Include="images\fa4596ad9a9d39901eeb455ed4f74e44.jpg" />
+    <Content Include="images\giay1.jpg" />
+    <Content Include="images\giay10.jpg" />
+    <Content Include="images\giay2.jpg" />
+    <Content Include="images\giay3.jpg" />
+    <Content Include="images\giay4.jpg" />
+    <Content Include="images\giay5.jpg" />
+    <Content Include="images\giay6.jpg" />
+    <Content Include="images\giay7.jpg" />
+    <Content Include="images\giay8.jpg" />
+    <Content Include="images\giay9.jpg" />
+    <Content Include="images\grid10.jpg" />
+    <Content Include="images\grid11.jpg" />
+    <Content Include="images\grid12.jpg" />
+    <Content Include="images\grid13.jpg" />
+    <Content Include="images\grid14.jpg" />
+    <Content Include="images\grid3.jpg" />
+    <Content Include="images\grid4.jpg" />
+    <Content Include="images\grid5.jpg" />
+    <Content Include="images\grid6.jpg" />
+    <Content Include="images\grid7.jpg" />
+    <Content Include="images\grid8.jpg" />
+    <Content Include="images\grid9.jpg" />
+    <Content Include="images\jodan.png" />
+    <Content Include="images\logo.png" />
+    <Content Include="images\logoadidas01.jpg" />
+    <Content Include="images\logoconvot.png" />
+    <Content Include="images\logocroc.jpg" />
+    <Content Include="images\logonike.jpg" />
+    <Content Include="images\logovan.jpg" />
+    <Content Include="images\mens-Converse-classic-SB-shoes-red-387_04_LRG.jpg" />
+    <Content Include="images\menu1.jpg" />
+    <Content Include="images\menu2.jpg" />
+    <Content Include="images\menu3.jpg" />
+    <Content Include="images\newbalance.jpg.png" />
+    <Content Include="images\puma.jpg.png" />
+    <Content Include="images\Q2940jordanshoes_9571.jpg" />
+    <Content Include="images\Q3697jordanshoes_12174.jpg" />
+    <Content Include="images\shoe1.jpg" />
+    <Content Include="images\shoe2.jpg" />
+    <Content Include="images\shoe3.jpg" />
+    <Content Include="images\show.jpg" />
+    <Content Include="images\show1.jpg" />
+    <Content Include="images\show2.jpg" />
+    <Content Include="images\show3.jpg" />
+    <Content Include="images\vans-old-skool.jpg" />
+    <Content Include="images\Vans-SK8-Hi-Black-White-Classic-Womens-Shoes_06.jpg" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="fonts\Archivo_Narrow\ArchivoNarrow-Regular.ttf" />
+    <Content Include="fonts\Didact_Gothic\DidactGothic.ttf" />
+    <Content Include="fonts\Pathway_Gothic_One\PathwayGothicOne-Regular.ttf" />
+    <Content Include="Models\dbQLBanGiay.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>dbQLBanGiay.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Content\MyStyle\assets\font-awesome\font\fontawesome-webfont.eot" />
+    <Content Include="Content\MyStyle\assets\font-awesome\font\fontawesome-webfont.ttf" />
+    <Content Include="Content\MyStyle\assets\font-awesome\font\fontawesome-webfont.woff" />
+    <Content Include="Content\MyStyle\assets\font-awesome\font\FontAwesome.otf" />
+    <Content Include="Content\MyStyle\assets\font-awesome\less\bootstrap.less" />
+    <Content Include="Content\MyStyle\assets\font-awesome\less\core.less" />
+    <Content Include="Content\MyStyle\assets\font-awesome\less\extras.less" />
+    <Content Include="Content\MyStyle\assets\font-awesome\less\font-awesome-ie7.less" />
+    <Content Include="Content\MyStyle\assets\font-awesome\less\font-awesome.less" />
+    <Content Include="Content\MyStyle\assets\font-awesome\less\icons.less" />
+    <Content Include="Content\MyStyle\assets\font-awesome\less\mixins.less" />
+    <Content Include="Content\MyStyle\assets\font-awesome\less\path.less" />
+    <Content Include="Content\MyStyle\assets\font-awesome\less\variables.less" />
+    <Content Include="Content\MyStyle\assets\font-awesome\scss\font-awesome-ie7.scss" />
+    <Content Include="Content\MyStyle\assets\font-awesome\scss\font-awesome.scss" />
+    <Content Include="Content\MyStyle\assets\font-awesome\scss\_bootstrap.scss" />
+    <Content Include="Content\MyStyle\assets\font-awesome\scss\_core.scss" />
+    <Content Include="Content\MyStyle\assets\font-awesome\scss\_extras.scss" />
+    <Content Include="Content\MyStyle\assets\font-awesome\scss\_icons.scss" />
+    <Content Include="Content\MyStyle\assets\font-awesome\scss\_mixins.scss" />
+    <Content Include="Content\MyStyle\assets\font-awesome\scss\_path.scss" />
+    <Content Include="Content\MyStyle\assets\font-awesome\scss\_variables.scss" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\giayy\teamplateAd\font\fontawesome-webfont-0.eot" />
+    <Content Include="Content\giayy\teamplateAd\font\fontawesome-webfont-62877.eot" />
+    <Content Include="Content\giayy\teamplateAd\font\fontawesome-webfont-62877.ttf" />
+    <Content Include="Content\giayy\teamplateAd\font\fontawesome-webfont-62877.woff" />
+    <Content Include="Content\giayy\teamplateAd\font\glyphicons-regular-0.eot" />
+    <Content Include="Content\giayy\teamplateAd\font\glyphicons-regular.eot" />
+    <Content Include="Content\giayy\teamplateAd\font\glyphicons-regular.ttf" />
+    <Content Include="Content\giayy\teamplateAd\font\glyphicons-regular.woff" />
+    <Content Include="Content\giayy\teamplateAd\font\glyphiconshalflings-regular-0.eot" />
+    <Content Include="Content\giayy\teamplateAd\font\glyphiconshalflings-regular.eot" />
+    <Content Include="Content\giayy\teamplateAd\font\glyphiconshalflings-regular.ttf" />
+    <Content Include="Content\giayy\teamplateAd\font\glyphiconshalflings-regular.woff" />
+    <Content Include="Content\giayy\loginAD\less\style.less" />
+    <Content Include="Content\giayy\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\giayy\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\giayy\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\giayy\fonts\FontAwesome.otf" />
+    <Content Include="Content\giayy\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\giayy\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\giayy\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="Models\dbQLBanGiay.dbml.layout">
+      <DependentUpon>dbQLBanGiay.dbml</DependentUpon>
+    </None>
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\imagezoom.js" />
+    <Content Include="Scripts\jquery-2.1.4.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.flexslider.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\simpleCart.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\NguoiDung\Dangky.cshtml" />
+    <Content Include="Views\NguoiDung\Dangnhap.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\GioHang\GioHang.cshtml" />
+    <Content Include="Views\GioHang\GioHangPartial.cshtml" />
+    <Content Include="Views\GioHang\DatHang.cshtml" />
+    <Content Include="Views\Shared\_Header.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\GioHang\XacNhanDonHang.cshtml" />
+    <Content Include="Views\GioHang\TenKH.cshtml" />
+    <Content Include="Views\Admin\Login.cshtml" />
+    <Content Include="Views\NguoiDung\DangXuat.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\Giay.cshtml" />
+    <Content Include="Views\Admin\ThemGiay.cshtml" />
+    <Content Include="Views\Admin\ChiTietGiay.cshtml" />
+    <Content Include="Views\Admin\XoaGiay.cshtml" />
+    <Content Include="Views\Admin\SuaGiay.cshtml" />
+    <Content Include="Views\Admin\NhaSanXuat.cshtml" />
+    <Content Include="Views\Admin\ThemNSX.cshtml" />
+    <Content Include="Views\Admin\XoaNSX.cshtml" />
+    <Content Include="Views\Admin\SuaNSX.cshtml" />
+    <Content Include="Views\Admin\ChiTietNSX.cshtml" />
+    <Content Include="Views\Admin\DonHang.cshtml" />
+    <Content Include="Views\Home\HangSanXuat.cshtml" />
+    <Content Include="Views\Home\SPtheoHang.cshtml" />
+    <Content Include="Views\Home\LoaiSP.cshtml" />
+    <Content Include="Views\Home\SPtheoLoai.cshtml" />
+    <Content Include="Views\Home\ChiTietSP.cshtml" />
+    <Content Include="Views\Search\KetQua.cshtml" />
+    <Content Include="Views\Admin\ChiTietDonHang.cshtml" />
+    <Content Include="Views\Home\SPBanChay.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{FFFD464A-3433-40D3-8408-B5B1C4F11874}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52735</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:52735/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.111.0\build\net46\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.111.0\build\net46\System.Data.SQLite.Core.targets'))" />
+  </Target>
+  <Import Project="..\packages\System.Data.SQLite.Core.1.0.111.0\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.111.0\build\net46\System.Data.SQLite.Core.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

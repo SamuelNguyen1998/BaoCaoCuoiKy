@@ -1,0 +1,115 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@using WebBanGiay.Models
+@model PagedList.PagedList<Giay>
+
+@helper Truncate(string input, int length)
+{
+    if (input.Length < length)
+    {
+        @input
+    }
+    else
+    {
+        @input.Substring(0, length)<text>...</text>
+    }
+}
+
+
+@{
+    ViewBag.Title = "Giay";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center; color: blue">Quản lý giày</h2>
+<p>
+    @Html.ActionLink("Thêm sản phẩm", "ThemGiay")
+</p>
+<table class="table" border="1">
+    <tr>
+        <th style="text-align:center; width:50px">
+            Mã giày
+        </th>
+        <th style="text-align:center; width:120px">
+            Tên giày
+        </th>
+        <th style="text-align:center; width:45px">
+            Mã hãng
+        </th>
+        <th style="text-align:center; width:45px">
+            Mã loại
+        </th>
+        <th style="text-align:center; width:80px">
+            Màu sắc
+        </th>
+        <th style="text-align:center; width:80px">
+            Hình ảnh
+        </th>
+     
+        <th style="text-align:center; width:90px">
+            Giá
+        </th>
+        <th style="text-align:center; width:80px">
+            Trạng thái
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td style="text-align:center">
+                @Html.DisplayFor(modelItem => item.MaGiay)
+            </td>
+            <td style="text-align:center">
+                @Html.DisplayFor(modelItem => item.TenGiay)
+               
+            </td>
+            <td style="text-align:center">
+                @Html.DisplayFor(modelItem => item.HangSX.TenHang)
+            </td>
+            <td style="text-align:center">
+                @Html.DisplayFor(modelItem => item.LoaiGiay.TenLoai)
+            </td>
+            <td style="text-align:center">
+                @Html.DisplayFor(modelItem => item.MauSac)
+            </td>
+            <td style="text-align:center">
+                <img src="~/images/@item.HinhAnh" width="80" />
+            </td>
+             
+          
+            <td style="text-align:center">
+                @*@Html.DisplayFor(modelItem => item.GiaBan)*@
+                
+                    @String.Format("{0:0,0}", item.GiaBan) VNĐ
+               
+
+
+            </td>
+            <td style="text-align:center">
+                @Html.DisplayFor(modelItem => item.TrangThai)
+            </td>
+            <td style="text-align:center; width:70px">
+                @Html.ActionLink("Sửa", "SuaGiay", new { id = item.MaGiay }) <br />
+                @Html.ActionLink("Chi tiết", "ChiTietGiay", new { id = item.MaGiay }) <br />
+                @Html.ActionLink("Xóa", "XoaGiay", new { id = item.MaGiay })
+            </td>
+        </tr>
+    }
+
+</table>
+<a>Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount</a>
+<div class="menutrang">
+    @Html.PagedListPager(Model, page => Url.Action("Giay", new { page = page }))</>
+</div>
+<style>
+    .menutrang li {
+        display: inline-block;
+        position: relative;
+        float: left;
+        color: #428bca;
+        text-decoration: none;
+        background-color: #fff;
+    }
+</style>

@@ -1,0 +1,105 @@
+﻿@model WebBanGiay.Models.Giay
+@{
+    ViewBag.Title = "Xóa Giày";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h3 style="color:red">Bạn chắc chắn muốn xóa giày này?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên giày:
+        </dt>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.TenGiay)
+        </dt>*@
+
+        <dd>
+            @Html.DisplayFor(model => model.TenGiay)
+        </dd>
+
+        <dt>
+            Tên hãng:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HangSX.TenHang)
+        </dd>
+
+        <dt>
+            Loại:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoaiGiay.TenLoai)
+        </dd>
+
+        <dt>
+            Màu sắc:
+        </dt>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.MauSac)
+        </dt>*@
+
+        <dd>
+            @Html.DisplayFor(model => model.MauSac)
+        </dd>
+
+        <dt>
+            Hình ảnh:
+        </dt>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.HinhAnh)
+        </dt>*@
+
+        <dd>
+            @Html.DisplayFor(model => model.HinhAnh)
+        </dd>
+
+
+        <dd>
+            <img src="@Url.Content("~/images/"+ Model.HinhAnh)" width="100" />
+        </dd>
+
+        <dt>
+            Giá bán:
+        </dt>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.GiaBan)
+        </dt>*@
+
+
+        <dd>
+            @String.Format("{0:0,0}", Model.GiaBan) VNĐ
+        </dd>
+
+
+        <dt>
+            Trạng thái:
+        </dt>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.TrangThai)
+        </dt>*@
+
+        <dd>
+            @Html.DisplayFor(model => model.TrangThai)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xác nhận" class="btn btn-default" /> |
+            @Html.ActionLink("Hủy", "Giay")
+        </div>
+    }
+</div>

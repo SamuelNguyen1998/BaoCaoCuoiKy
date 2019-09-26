@@ -1,0 +1,94 @@
+﻿@*@using BotDetect.Web.Mvc;
+
+<link href="@BotDetect.Web.CaptchaUrls.Absolute.LayoutStyleSheetUrl"
+      rel="stylesheet" type="text/css" />
+@{ MvcCaptcha registerCapcha = new MvcCaptcha("registerCapcha"); }*@
+@{
+    ViewBag.Title = "PsneakerP: Đăng ký";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-3">
+        <div>
+            <a href="#" class="list-group-item active">
+                <strong>Thương Hiệu</strong>
+            </a>
+            <ul class="list-group">
+                @Html.Action("HangSanXuat", "Home")
+            </ul>
+        </div>
+        <div>
+            <a href="#" class="list-group-item active list-group-item-success">
+                <strong>Loại</strong>
+            </a>
+            <ul class="list-group">
+                @Html.Action("LoaiSP", "Home")
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div>
+            <ol class="breadcrumb">
+                <li><a href="~/Home">Home</a></li>
+                <li class="active">Đăng ký</li>
+            </ol>
+        </div>
+        <div class="row">
+            <h2 style="text-align:center">Đăng kí tài khoản</h2>
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary(true)
+                <form class="row" method="post" id="contactForm" novalidate="novalidate">
+
+                    <div class="col-md-12 form-group">
+                        @Html.TextBox("HoTenKH", "", new { @id = "formName", @class = "form-control", placeholder = "Nhập họ tên " })
+                        @ViewData["ErrorName"]
+                    </div>
+                    <div class="col-md-12 form-group">
+                        @Html.TextBox("Taikhoan", "", new { @id = "formUser", @class = "form-control", placeholder = "Tài khoản " })
+                        @ViewData["ErrorUsername"]
+                    </div>
+                    <div class="col-md-12 form-group">
+                        @Html.Password("Matkhau", "", new { @class = "form-control", placeholder = "Mật khẩu" })
+                        @ViewData["ErrorPassword"]
+                    </div>
+                    <div class="col-md-12 form-group">
+                        @Html.Password("MatkhauRepeat", "", new { @class = "form-control", placeholder = "Nhập lại mật khẩu" })
+                        @ViewData["ErrorPasswordRP"]
+                    </div>
+                    <div class="col-md-12 form-group">
+                        @Html.TextBox("Email", "", new { @id = "formEmail", @class = "form-control", placeholder = "Example@email.com " })
+                        @ViewData["ErrorEmail"]
+                    </div>
+                    <div class="col-md-12 form-group">
+                        @Html.TextBox("DiachiKH", "", new { @class = "form-control", placeholder = "Địa chỉ (Optional)" })
+                    </div>
+                    <div class="col-md-12 form-group">
+                        @Html.TextBox("DienthoaiKH", "", new { @class = "form-control", placeholder = "Điện thoại " })
+                        @ViewData["ErrorPhone"]
+                    </div>
+                    <div class="col-md-12 form-group">
+                        <input type="date" name="Ngaysinh" value="" class="form-control" placeholder="Ngày sinh" />
+                    </div>
+                    @*<div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            @Html.Captcha(registerCapcha)
+                            @Html.TextBox("CaptchaCode")
+                        </div>
+                    </div>*@
+
+                    <div class="col-md-12 form-group" style="text-align:center">
+                        <input type="submit" value="Đăng ký" class="primary-btn" onclick="validateForm()" />
+                    </div>
+                    <div style="text-align:center">Đã có tài khoản ? - <a href="~/NguoiDung/DangNhap">Đăng nhập</a></div>
+                    <h3 style="color:red; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
+                        @ViewBag.Thongbao
+                        @ViewData["Loi"]
+                    </h3>
+                </form>
+
+            }
+        </div>
+    </div>
+</div>

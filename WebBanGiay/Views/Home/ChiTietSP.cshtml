@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "PSneakerP : Chi Tiết SP";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-3">
+        <div>
+            <a class="list-group-item active">
+                <strong>Thương Hiệu</strong>
+            </a>
+            <ul class="list-group">
+                @Html.Action("HangSanXuat", "Home")
+            </ul>
+        </div>
+        <div>
+            <a class="list-group-item active list-group-item-success">
+                <strong>Loại</strong>
+            </a>
+            <ul class="list-group">
+                @Html.Action("LoaiSP", "Home")
+            </ul>
+        </div>
+
+    </div>
+    <div class="col-md-9">
+        <div>
+            <ol class="breadcrumb">
+                <li><a href="/Home">Home</a></li>
+                <li class="active">Thông tin giày</li>
+            </ol>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-4 text-center col-sm-6 col-xs-6">
+                @*<div class="fb-like" data-href="@Model.CmtLikeShare" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>*@
+                <div class="thumbnail product-box">
+                    <img src="~/images/@Model.HinhAnh" />
+                    <br />
+                    <p>
+                        <a href="@Url.Action("ThemGioHang","GioHang", new { @sMaGiay = @Model.MaGiay, @sURL=Request.Url.ToString()})" class="btn btn-success" role="button">Thêm vào giỏ</a>
+                        @*<a href="@Url.Action("ThemGioHang","GioHang", new { @sMaDienThoai = @Model.MaDienThoai, @sURL=Request.Url.ToString()})" class="btn btn-primary" role="button">@Html.ActionLink("Mua ngay","DatHang","GioHang")</a></p>*@
+                        <a href="@Model.ThanhToanOnline">
+                            <img src="~/Content/giayy/img/thanhtoan-l.png" alt="Thanh toán an toàn với Bảo Kim !" border="0" title="Thanh toán trực tuyến an toàn dùng tài khoản Ngân hàng (VietcomBank, TechcomBank, Đông Á, VietinBank, Quân Đội, VIB, SHB,... và thẻ Quốc tế (Visa, Master Card...) qua Cổng thanh toán trực tuyến BảoKim.vn">
+            
+                        </a>
+                        
+                        
+
+                </div>
+            </div>
+            <br />
+            <h5 style="color:red; font-weight:bold">TÊN:</h5> @Model.TenGiay
+            <h5 style="color:red; font-weight:bold">MÀU:</h5>@Model.MauSac
+            <h5 style="color:red; font-weight:bold">GIÁ:</h5>@string.Format("{0:0,0}", @Model.GiaBan)đ
+
+        </div>
+        @*<div class="fb-comments" data-href="@Model.CmtLikeShare" data-width="700" data-numposts="5"></div>*@
+    </div>
+
+</div>
+
+
+

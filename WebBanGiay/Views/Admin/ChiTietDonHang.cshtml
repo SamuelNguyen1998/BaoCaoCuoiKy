@@ -1,0 +1,84 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@using WebBanGiay.Models
+@model PagedList.PagedList<ChiTietDonHang>
+
+
+@{
+    ViewBag.Title = "DonHang";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center; color:green">Chi tiết đơn đặt hàng</h2>
+<br />
+<p>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().IDDonHang)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.First().IDGiay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().SoLuong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().DonGia)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDDonHang)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Giay.TenGiay)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.SoLuong)
+            </td>
+
+            <td>
+                @String.Format("{0:0,0}", item.DonGia) VNĐ
+                @*@Html.DisplayFor(modelItem => item.DonGia)*@
+            </td>
+
+            <td>
+                @*@Html.DisplayFor(modelItem => item.TongTien)*@
+                @*  @String.Format("{0:0,0}", item.) VNĐ*@
+            </td>
+
+
+        </tr>
+    }
+
+</table>
+<a>Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount</a>
+<div class="menutrang">
+    @Html.PagedListPager(Model, page => Url.Action("ChiTietDonHang", new { page = page }))</>
+</div>
+<style>
+    .menutrang li {
+        display: inline-block;
+        position: relative;
+        float: left;
+        color: #428bca;
+        text-decoration: none;
+        background-color: #fff;
+    }
+</style>
+<div>
+    @Html.ActionLink("Quay lại", "DonHang")
+</div>
+
+
+

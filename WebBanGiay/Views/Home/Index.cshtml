@@ -1,0 +1,141 @@
+﻿@using WebBanGiay.Models
+@using PagedList.Mvc
+@model PagedList.PagedList<Giay>
+
+
+@{
+    ViewBag.Title = "PSneakerP";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-9">
+        <div class="well well-lg offer-box text-center">
+
+
+            Khuyến mãi : &nbsp; <span class="glyphicon glyphicon-cog"></span>&nbsp;Nhiều ưu đãi hấp dẫn khi mua hàng !
+
+
+        </div>
+        <div class="main box-border">
+        <div class="span9">
+            <div class="well np">
+                <div id="myCarousel" class="carousel slide homCar">
+                    <div class="carousel-inner">
+                        <div class="item">
+                            <img style="width:150%" src="~/images/logo.png" alt="bootstrap ecommerce templates">
+                            <div class="carousel-caption">
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img style="width:150%" src="~/images/cropped-newbiestore-sneaker-banner-2.jpg" alt="bootstrap ecommerce templates">
+                            <div class="carousel-caption">
+                            </div>
+                        </div>
+                        <div class="item active">
+                            <img style="width:150%" src="~/images/3c316e4.png" alt="bootstrap ecommerce templates">
+                            <div class="carousel-caption">
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img style="width:150%" src="~/images/fa4596ad9a9d39901eeb455ed4f74e44.jpg" alt="bootstrap templates">
+                            <div class="carousel-caption">
+                            </div>
+                        </div>
+                    </div>
+                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+                    <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+                </div>
+            </div>
+        </div>
+
+       
+        </div>
+            <br />
+        </div>
+
+    <div class="col-md-3 text-center">
+        <div class="col-md-12 col-sm-6 col-xs-6">
+            <div class="offer-text">
+                sale off 29%
+            </div>
+            <div  class="thumbnail product-box">
+                <a href="/Home/ChiTietSP/SS9P"><img src="~/images/menu2.jpg" width="172" /></a>
+                <div class="caption">
+                    <h3><a href="/Home/ChiTietSP/15">The Nike Air Jordan </a></h3>
+                    <p><a href="/Home/ChiTietSP/15">Bấm để xem chi tiết </a></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 col-sm-6 col-xs-6">
+            <div class="offer-text2">
+                sale off 12% 
+            </div>
+            <div class="thumbnail product-box">
+                <a href="/Home/ChiTietSP/XMA2L"><img src="~/images/Vans-SK8-Hi-Black-White-Classic-Womens-Shoes_06.jpg" width="172" /></a>
+                <div class="caption">
+                    <h3><a href="/Home/ChiTietSP/20">Vans Classics Authentic</a></h3>
+                    <p><a href="/Home/ChiTietSP/20">Bấm để xem chi tiết </a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+        <div>
+            <a class="list-group-item active">
+                <strong>Thương Hiệu</strong>
+            </a>
+            <ul class="list-group">
+                @Html.Action("HangSanXuat", "Home")
+            </ul>
+        </div>
+        <div>
+            <a class="list-group-item active list-group-item-success">
+                <strong>Loại</strong>
+            </a>
+            <ul class="list-group">
+                @Html.Action("LoaiSP", "Home")
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-md-9">
+        <div>
+            <ol class="breadcrumb">
+                <li><a href="/Home">Home</a></li>
+                <li class="active">Trang Chủ</li>
+            </ol>
+        </div>
+
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4 text-center col-sm-6 col-xs-6">
+                    <div class="thumbnail product-box">
+                        <a href="@Url.Action("ChiTietSP","Home", new{id = item.MaGiay})"><img src="~/images/@item.HinhAnh" /></a>
+                        <div class="caption">
+                            <h3><a style="font-size:18px" href="@Url.Action("ChiTietSP" ,"Home", new{id = item.MaGiay})">@item.TenGiay</a></h3>
+                            <p>Price : <strong>@string.Format("{0:0,0}", item.GiaBan)đ</strong>  </p>
+                            <p>@item.TrangThai   </p>
+                            <p>
+                                <a href="@Url.Action("ThemGioHang","GioHang", new { @sMaGiay = @item.MaGiay, @sURL=Request.Url.ToString()})" class="btn btn-success" role="button">Thêm vào giỏ</a>
+                                <a href="@Url.Action("ChiTietSP" ,"Home", new{id = item.MaGiay})" class="btn btn-primary" role="button">Thông tin</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+        <div>
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+        </div>
+    </div>
+</div>
+

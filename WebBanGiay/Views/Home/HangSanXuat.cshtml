@@ -1,0 +1,12 @@
+﻿@model IEnumerable<WebBanGiay.Models.HangSX>
+
+
+
+@foreach (var item in Model)
+{
+    <li class="list-group-item">
+        <a href="@Url.Action("SPTheoHang", "Home",new {id = item.MaHang})">
+            @item.TenHang
+        </a>
+    </li>
+}

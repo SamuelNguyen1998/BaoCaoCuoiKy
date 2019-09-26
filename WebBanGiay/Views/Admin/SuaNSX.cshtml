@@ -1,0 +1,52 @@
+﻿@model WebBanGiay.Models.HangSX
+@{
+    ViewBag.Title = "Sửa nhà sản xuất";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="color:palevioletred; text-align:center">Thay đổi thông tin thương hiệu</h2>
+
+@using (Html.BeginForm("SuaNSX", "Admin", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.MaHang)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaHang, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div style="font:18px"> @Model.MaHang</div>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.TenHang, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TenHang, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TenHang, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Logo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="logoHSX" />
+                <img src="@Url.Content("~/images/"+ Model.Logo)" width="100" /> (Ảnh hiện tại)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Lưu" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Quay lại", "NhaSanXuat")
+</div>
+
+

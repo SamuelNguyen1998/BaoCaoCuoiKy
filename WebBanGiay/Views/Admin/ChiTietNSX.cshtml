@@ -1,0 +1,42 @@
+﻿@model WebBanGiay.Models.HangSX
+@{
+    ViewBag.Title = "ChiTietNSX";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="color:palevioletred; text-align:center">Chi tiết thương hiệu</h2>
+
+<div>
+    <h4>Nhà sản xuất</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaHang)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MaHang)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TenHang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenHang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Logo)
+        </dt>
+
+        <dd>
+            <img src="@Url.Content("~/images/"+ Model.Logo)" width="100" />
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "SuaNSX", new { id = Model.MaHang }) |
+    @Html.ActionLink("Trở về", "NhaSanXuat")
+</p>
+
+

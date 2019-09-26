@@ -1,0 +1,67 @@
+﻿@using WebBanGiay.Models
+@using PagedList.Mvc
+@model PagedList.PagedList<Giay>
+
+
+@{
+    ViewBag.Title = "PSneakerP: SP theo hãng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-3">
+        <div>
+            <a class="list-group-item active">
+                <strong>Thương Hiệu</strong>
+            </a>
+            <ul class="list-group">
+                @Html.Action("HangSanXuat", "Home")
+            </ul>
+        </div>
+        <div>
+            <a class="list-group-item active list-group-item-success">
+                <strong>Loại</strong>
+            </a>
+            <ul class="list-group">
+                @Html.Action("LoaiSP", "Home")
+            </ul>
+        </div>
+        <!-- /.div -->
+        <!-- /.div -->
+    </div>
+    <!-- /.col -->
+    <div class="col-md-9">
+        <div>
+            <ol class="breadcrumb">
+                <li><a href="/Home">Home</a></li>
+                <li class="active">Thương Hiệu</li>
+            </ol>
+        </div>
+
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4 text-center col-sm-6 col-xs-6">
+                    <div class="thumbnail product-box">
+                        <a href="@Url.Action("ChiTietSP" ,"Home", new{id = item.MaGiay})"><img src="~/images/@item.HinhAnh" /></a>
+                        <div class="caption">
+                            <h3><a style="font-size:18px" href="@Url.Action("ChiTietSP" ,"Home", new{id = item.MaGiay})">@item.TenGiay</a></h3>
+                            <p>Price : <strong>@string.Format("{0:0,0}", item.GiaBan)đ</strong>  </p>
+                            <p>@item.TrangThai   </p>
+                            <p>
+                                <a href="@Url.Action("ThemGioHang","GioHang", new { @sMaGiay = @item.MaGiay, @sURL=Request.Url.ToString()})" class="btn btn-success" role="button">Thêm vào giỏ</a>
+                                <a href="@Url.Action("ChiTietSP" ,"Home", new{id = item.MaGiay})" class="btn btn-primary" role="button">Thông tin</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            }
+            <!--/.col-->
+        </div>
+        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+        <div>
+            @Html.PagedListPager(Model, page => Url.Action("SPTheoHang", new { page = page }))
+        </div>
+    </div>
+</div>
+
