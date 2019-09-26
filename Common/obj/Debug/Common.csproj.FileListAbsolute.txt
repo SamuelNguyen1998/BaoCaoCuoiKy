@@ -1,0 +1,5 @@
+C:\Users\PHUNG\source\repos\WebBanGiay\Common\bin\Debug\Common.dll
+C:\Users\PHUNG\source\repos\WebBanGiay\Common\bin\Debug\Common.pdb
+C:\Users\PHUNG\source\repos\WebBanGiay\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+C:\Users\PHUNG\source\repos\WebBanGiay\Common\obj\Debug\Common.dll
+C:\Users\PHUNG\source\repos\WebBanGiay\Common\obj\Debug\Common.pdb
